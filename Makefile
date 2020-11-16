@@ -15,3 +15,6 @@ deploy-mysql:
 deploy-app:
 	docker run -p 8080:8080 --name client-app\
  	--link mysql-container:mysql client-app
+
+test:
+	./gradlew test
