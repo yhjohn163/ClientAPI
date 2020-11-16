@@ -11,6 +11,13 @@ group = 'com.jadan'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '13'
 
+
+wrapper {
+	gradleVersion = '6.6.1'
+	distributionType = Wrapper.DistributionType.ALL
+}
+
+
 configurations {
 	compileOnly {
 		extendsFrom annotationProcessor
