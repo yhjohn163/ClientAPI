@@ -1,0 +1,30 @@
+version: '3.7'
+
+networks:
+  integration-net:
+    driver: bridge
+
+services:
+  client-app:
+    container_name: 'client-api'
+    build:
+      context: ""
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql-container
+    networks:
+      - integration-net
+
+  mysql-container:
+    image: library/mysql:8.0
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=clientDB
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=password
+    ports:
+      - "3307:3306"
+    networks:
+      - integration-net

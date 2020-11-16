@@ -1,0 +1,233 @@
+{
+	"info": {
+		"_postman_id": "debadb22-f9bf-45ae-a0fb-b1787bddc4a4",
+		"name": "Clients",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Client",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"mahmoud jadan\",\n    \"birthdate\":\"31-05-1991\",\n    \"cpf\":\"93396928024\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/client",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"client"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Client",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"MAH 2nd jadan \",\n    \"birthdate\":\"31-05-1971\",\n    \"cpf\":\"585.596.680-12\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/client/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"client",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Patch Client",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"cpf\":\"176.753.140-00\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/client/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"client",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Client By ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/client/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"client",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Clients by name/cpf",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/client?name=mah&cpf=93396928024&size=2&page=0",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"client"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "mah"
+						},
+						{
+							"key": "cpf",
+							"value": "93396928024"
+						},
+						{
+							"key": "size",
+							"value": "2"
+						},
+						{
+							"key": "page",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "App resource-status",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/resource-status",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"resource-status"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "mah",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Swagger URL -access in the browser",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/swagger-ui/index.html",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"swagger-ui",
+						"index.html"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "mah",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Swagger API ",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v2/api-docs",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v2",
+						"api-docs"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "mah",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

@@ -1,0 +1,69 @@
+import org.apache.tools.ant.filters.ReplaceTokens
+import org.gradle.internal.jvm.Jvm
+
+plugins {
+	id 'org.springframework.boot' version '2.3.5.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+	id 'java'
+}
+
+group = 'com.jadan'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '13'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+processResources {
+	filesMatching('**/app-manifest.properties') {
+		filter(ReplaceTokens, tokens: [gradleVersion    : 'Gradle Version ' + gradle.gradleVersion,
+									   javaVersion      : Jvm.current().toString(),
+									   projectVersion   : "1",
+									   buildNumber      : getImplementationBuild(),
+									   projectArtifactId: 'client-api' ])
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-cache:2.3.5.RELEASE'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	implementation 'br.com.caelum.stella:caelum-stella-core:2.1.1'
+	implementation 'com.github.ben-manes.caffeine:caffeine'
+	implementation 'io.springfox:springfox-boot-starter:3.0.0'
+
+	compileOnly 'org.projectlombok:lombok'
+	runtimeOnly 'mysql:mysql-connector-java'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+		exclude group: 'org.mockito', module: 'mockito-core'
+
+	}
+	testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.2'
+	testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.6.2'
+	testImplementation 'com.h2database:h2:1.4.200'
+	testImplementation("org.mockito:mockito-core:3.5.13")
+	testImplementation("org.mockito:mockito-inline:3.5.13")
+}
+
+test {
+	useJUnitPlatform()
+}
+
+
+static def getImplementationBuild() {
+	def date = new Date().format("yyyyMMdd")
+	def buildNumber = System.getProperty("buildNumber", "x")
+	def impBuild = date + "-" + buildNumber
+	return impBuild
+}
+
