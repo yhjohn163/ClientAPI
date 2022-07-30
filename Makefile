@@ -5,7 +5,7 @@ docker-build:
 	cp Dockerfile build/libs ; cd build/libs ; docker build -t client-app .
 
 deploy-mysql:
-	docker run --name mysql-container \
+	docker run -p 3306:3306 --name mysql-container \
 	-e MYSQL_ROOT_PASSWORD=root\
 	 -e MYSQL_DATABASE=clientDB\
 	  -e MYSQL_USER=user\
